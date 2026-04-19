@@ -34,7 +34,7 @@ dist/
 .env.local
 .env.development.local
 .env.test.local
-.env.production.local
+# Note: .env.production.local is NOT ignored for Vercel deployment
 
 # IDE
 .vscode/
