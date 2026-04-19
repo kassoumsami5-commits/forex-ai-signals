@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Noto Sans Arabic', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-dark-900 text-white antialiased;
+    direction: rtl;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-dark-500;
+  }
+}
+
+@layer components {
+  /* Card styles */
+  .card {
+    @apply bg-dark-800 rounded-2xl border border-dark-700 p-6 transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    @apply border-primary-500/50 shadow-glow;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold py-3 px-6 rounded-xl 
+           hover:from-primary-500 hover:to-primary-600 transition-all duration-300 
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-dark-900
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-dark-700 text-white font-semibold py-3 px-6 rounded-xl border border-dark-600
+           hover:bg-dark-600 hover:border-dark-500 transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-dark-900;
+  }
+
+  .btn-gold {
+    @apply bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 font-bold py-3 px-6 rounded-xl
+           hover:from-gold-400 hover:to-gold-500 transition-all duration-300 shadow-glow
+           focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-dark-900;
+  }
+
+  /* Input styles */
+  .input-field {
+    @apply w-full bg-dark-700 border border-dark-600 rounded-xl px-4 py-3 text-white
+           placeholder-dark-400 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500
+           transition-all duration-300;
+  }
+
+  .input-label {
+    @apply block text-sm font-medium text-dark-300 mb-2;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-success {
+    @apply bg-success-500/20 text-success-500 border border-success-500/30;
+  }
+
+  .badge-danger {
+    @apply bg-danger-500/20 text-danger-500 border border-danger-500/30;
+  }
+
+  .badge-warning {
+    @apply bg-warning-500/20 text-warning-500 border border-warning-500/30;
+  }
+
+  .badge-primary {
+    @apply bg-primary-500/20 text-primary-400 border border-primary-500/30;
+  }
+
+  /* Signal type badges */
+  .signal-buy {
+    @apply bg-success-500/20 text-success-400 border border-success-500/30;
+  }
+
+  .signal-sell {
+    @apply bg-danger-500/20 text-danger-400 border border-danger-500/30;
+  }
+
+  .signal-neutral {
+    @apply bg-dark-600 text-dark-300 border border-dark-500;
+  }
+
+  /* Price display */
+  .price-up {
+    @apply text-success-500;
+  }
+
+  .price-down {
+    @apply text-danger-500;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply animate-spin rounded-full border-4 border-dark-600 border-t-primary-500;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent;
+  }
+
+  /* Navigation active state */
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-dark-300 hover:text-white hover:bg-dark-700/50 transition-all duration-300;
+  }
+
+  .nav-link-active {
+    @apply bg-dark-700 text-white border-r-4 border-primary-500;
+  }
+}
+
+@layer utilities {
+  /* Animation delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  /* Custom gradient backgrounds */
+  .gradient-gold {
+    background: linear-gradient(135deg, #d4a574 0%, #b8894a 100%);
+  }
+
+  .gradient-dark {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* RTL Support for Arabic */
+[dir="rtl"] {
+  .rtl\:text-right { text-align: right; }
+  .rtl\:text-left { text-align: left; }
+  .rtl\:flex-row-reverse { flex-direction: row-reverse; }
+  .rtl\:space-x-reverse { --tw-space-x-reverse: 1; }
+}
+
+/* Market card pulse animation */
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+}
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+}
+
+.market-card-up {
+  animation: pulse-green 2s infinite;
+}
+
+.market-card-down {
+  animation: pulse-red 2s infinite;
+}
+
+/* Signal confidence meter */
+.confidence-bar {
+  @apply h-2 bg-dark-700 rounded-full overflow-hidden;
+}
+
+.confidence-bar-fill {
+  @apply h-full rounded-full transition-all duration-500;
+}
+
+/* Table styles */
+.data-table {
+  @apply w-full text-sm;
+}
+
+.data-table th {
+  @apply bg-dark-800 text-dark-400 font-medium px-4 py-3 text-right;
+}
+
+.data-table td {
+  @apply border-b border-dark-700 px-4 py-3;
+}
+
+.data-table tr:hover td {
+  @apply bg-dark-700/50;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-40;
+}
+
+.modal-content {
+  @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+         bg-dark-800 border border-dark-700 rounded-2xl p-6 z-50
+         w-full max-w-lg max-h-[90vh] overflow-y-auto;
+}
