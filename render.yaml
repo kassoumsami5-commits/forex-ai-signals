@@ -1,0 +1,25 @@
+# Render Blueprint for Forex AI Signals Backend
+
+services:
+  - type: web
+    name: forex-ai-signals-api
+    env: python
+    region: oregon
+    buildCommand: uv pip install -r requirements.txt --system
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    rootDir: backend
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET_KEY
+        value: forex-ai-signals-production-secret-key-2024
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: forex-ai-signals-frontend
+          envVarKey: RENDER_EXTERNAL_URL
